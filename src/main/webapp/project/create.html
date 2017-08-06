@@ -1,0 +1,27 @@
+<#include "/common/template.html" />
+<#macro fileTree  root >
+    <#if root.isDirectory()>
+        <li><a href="project/viewFile?path=${root.getAbsolutePath()}" target="navTab">${root.getName()}</a>
+            <ul>
+                <#list root.listFiles() as node>
+                    <@fileTree node/>
+                </#list>
+            </ul>
+        </li>
+    </#if>
+
+    <#if !root.isDirectory()>
+        <li>
+            <a href="project/viewFile?path=${root.getAbsolutePath()}"
+               target="dialog" resizable=true rel="file_view">${root.getName()}</a>
+        </li>
+    </#if>
+
+</#macro>
+<div>
+
+    <ul class="tree treeFolder expand">
+        <@fileTree root/>
+    </ul>
+
+</div>

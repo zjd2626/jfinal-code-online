@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = 1.6
+    targetCompatibility = 1.6
+    options.encoding = "UTF-8"
+}
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
+
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+//    mavenCentral()
+}
+
+dependencies {
+    compile 'com.jfinal:jfinal:1.9'
+    compile 'com.jfinal:jfinal-ext:3.1.2'
+    compile 'com.jfinal:jetty-server:8.1.8'
+    compile 'org.freemarker:freemarker:2.3.21'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.alibaba:druid:1.0.12'
+    compile 'log4j:log4j:1.2.17'
+    compile 'de.java2html:java2html:5.0'
+    compile 'mysql:mysql-connector-java:5.1.34'
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.codehaus.groovy:groovy-jsr223:2.3.7'
+    compile 'org.codehaus.groovy:groovy:2.3.7'
+
+
+}
+
